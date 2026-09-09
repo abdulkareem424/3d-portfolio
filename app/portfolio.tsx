@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import {
   ArrowDown,
   ArrowUp,
@@ -363,6 +363,8 @@ export default function Portfolio() {
           </div>
           <div className="projects-grid">
             {projects.map((project, i) => (
+              <Fragment key={project.id}>
+              {(i === 0 || i === 5) && <div className="work-group-heading"><h3>{lang === "ar" ? (i === 0 ? "الأنظمة والتطبيقات" : "المشاريع الأكاديمية والتدريبية") : (i === 0 ? "Products & platforms" : "Academic & training projects")}</h3><span>{i === 0 ? "01 — 05" : "06 — 10"}</span></div>}
               <article
                 className={`project-card ${project.color}`}
                 key={project.id}
@@ -375,7 +377,7 @@ export default function Portfolio() {
                     setActiveProject(project);
                   }}
                 >
-                  <span className="project-index">0{i + 1}</span>
+                  <span className="project-index">{String(i + 1).padStart(2, "0")}</span>
                   <span className="project-status">{project.status[lang]}</span>
                   <div className="project-identity">
                     {project.image ? (
@@ -388,28 +390,14 @@ export default function Portfolio() {
                         decoding="async"
                       />
                     ) : (
-                      <strong className="alhallak-mark" lang="ar">
+                      <strong className="alhallak-mark" dir="auto">
                         {project.mark}
-                        <small>ALHALLAK</small>
+                        <small>{project.stack[0]}</small>
                       </strong>
                     )}
                   </div>
                   <span className="project-visual-name">
-                    {lang === "ar"
-                      ? project.id === "tabeley"
-                        ? "طاولة. لحظة. لقاء."
-                        : project.id === "alc"
-                          ? "التصميم فن."
-                          : project.id === "alhallak"
-                            ? "أسعار يومية. بكل وضوح."
-                            : "رعاية مترابطة."
-                      : project.id === "tabeley"
-                        ? "A TABLE. A MOMENT. A CONNECTION."
-                        : project.id === "alc"
-                          ? "DESIGN IS ART."
-                          : project.id === "alhallak"
-                            ? "EVERYDAY PRICES. CLEARLY."
-                            : "CARE, CONNECTED."}
+                    {project.category[lang]}
                   </span>
                   <span className="project-open">
                     <ArrowUpRight size={22} />
@@ -436,6 +424,7 @@ export default function Portfolio() {
                   </ul>
                 </div>
               </article>
+              </Fragment>
             ))}
           </div>
           <div className="more-work">
@@ -660,6 +649,7 @@ export default function Portfolio() {
                 </ul>
               </div>
               <div className="detail-actions">
+                {activeProject.demo && <a className="text-link" href={activeProject.demo} target="_blank" rel="noopener noreferrer">{lang === "ar" ? "عرض المشروع الأصلي" : "Original project showcase"}<ArrowUpRight size={18} /></a>}
                 {activeProject.live && (
                   <a
                     className="button-primary"
