@@ -17,7 +17,6 @@ import {
   Smartphone,
   Terminal,
   Download,
-  Plus,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -261,11 +260,9 @@ export default function Portfolio() {
               <span />
               {t.available}
             </p>
-            <p className="hero-intro">{t.intro}</p>
+            <p className="hero-intro">{t.role}</p>
             <h1 id="hero-heading">
-              {t.headline}
-              <br />
-              <em>{t.headlineAccent}</em>
+              {t.name}
             </h1>
             <p className="hero-description">{t.heroBody}</p>
             <div className="hero-buttons">
@@ -305,15 +302,7 @@ export default function Portfolio() {
             </div>
           </div>
           <div className="hero-art">
-            <div className="art-coordinate" dir="ltr">
-              {lang === "en" ? "FORM × FUNCTION" : "الشكل × الوظيفة"}
-            </div>
             <Scene lang={lang} />
-            <span className="art-note" dir="ltr">
-              {lang === "en"
-                ? "01 — CONTINUOUS EXPLORATION"
-                : "01 — استكشاف مستمر"}
-            </span>
           </div>
           <div className="hero-bottom">
             <span className="location">
@@ -327,26 +316,6 @@ export default function Portfolio() {
             </a>
           </div>
         </section>
-        <div
-          className="stack-ribbon"
-          aria-label={lang === "ar" ? "التقنيات الأساسية" : "Core technologies"}
-        >
-          <div className="shell ribbon-inner" dir="ltr">
-            {[
-              "React",
-              "Laravel",
-              "Flutter",
-              "Node.js",
-              "PostgreSQL",
-              "Docker",
-            ].map((skill, i) => (
-              <span key={skill}>
-                {i > 0 && <Plus size={12} aria-hidden="true" />}
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
         <section
           id="work"
           className="section shell"
@@ -355,9 +324,7 @@ export default function Portfolio() {
           <p className="eyebrow">{t.workKicker}</p>
           <div className="section-heading">
             <h2 id="work-heading">
-              {t.workTitle}
-              <br />
-              <em>{t.workAccent}</em>
+              {t.work}
             </h2>
             <p>{t.workIntro}</p>
           </div>
@@ -427,31 +394,6 @@ export default function Portfolio() {
               </Fragment>
             ))}
           </div>
-          <div className="more-work">
-            <p>{t.moreWork}</p>
-            <a
-              href="https://abdulkareem424.github.io/geneeua-university/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span>
-                {t.geneva}
-                <small>{t.genevaType}</small>
-              </span>
-              <ArrowUpRight size={23} />
-            </a>
-            <a
-              href="https://github.com/abdulkareem424/wisc4test"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span>
-                {t.wisc}
-                <small>{t.wiscType}</small>
-              </span>
-              <ArrowUpRight size={23} />
-            </a>
-          </div>
         </section>
         <section
           id="about"
@@ -462,9 +404,7 @@ export default function Portfolio() {
             <div>
               <p className="eyebrow">{t.aboutKicker}</p>
               <h2 id="about-heading">
-                {t.aboutTitle}
-                <br />
-                <em>{t.aboutAccent}</em>
+                {t.about}
               </h2>
               <div className="about-signature">
                 <span className="signature" dir="ltr">
@@ -534,9 +474,7 @@ export default function Portfolio() {
             <div className="contact-grid">
               <div>
                 <h2 id="contact-heading">
-                  {t.contactTitle}
-                  <br />
-                  <em>{t.contactAccent}</em>
+                  {t.contact}
                 </h2>
                 <p className="contact-description">{t.contactBody}</p>
                 <a className="button-primary" href={`mailto:${contact.email}`}>
