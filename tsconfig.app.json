@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "incremental": false
+  },
+  "include": [
+    "app/**/*.ts",
+    "app/**/*.tsx",
+    "components/ui/button.tsx",
+    "components/ui/sheet.tsx",
+    "lib/utils.ts"
+  ],
+  "exclude": ["node_modules"]
+}
